@@ -4,7 +4,8 @@ export const PROFILE_DATA: PortfolioProfile = {
   name: "Jitendra Pathak",
   role: "Lead Engineer at Societe Generale",
   location: "Based in Bengaluru, India",
-  summary: "",
+  summary:
+    "Engineering leader focused on building robust, scalable systems and practical growth outcomes.",
   links: [
     {
       label: "LinkedIn",

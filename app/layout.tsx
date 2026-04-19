@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { UiPreferencesProvider } from "@/src/presentation/providers/ui-preferences-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Jitendra Pathak | Work Portfolio",
   description:
-    "Card-based portfolio of Jitendra Pathak with 10+ years in banking, transport, tours, SEO, business development, and 5 years of entrepreneurship.",
+    "Card-based portfolio of Jitendra Pathak, Lead Engineer at Societe Generale, based in Bengaluru, India.",
 };
 
 export default function RootLayout({
@@ -14,10 +13,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <UiPreferencesProvider>{children}</UiPreferencesProvider>
-      </body>
+    <html lang="en">
+      <head>
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+        />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

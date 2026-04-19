@@ -1,21 +1,28 @@
 # Security Policy
 
-## Supported Versions
+## Supported Version
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+This repository is actively maintained on the `main` branch.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security issue, please report it privately:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+- Open a private security advisory in GitHub (preferred), or
+- Contact the repository owner directly before public disclosure.
+
+Please include:
+
+- A clear description of the issue
+- Steps to reproduce
+- Impact assessment
+- Suggested mitigation (if available)
+
+## Security Controls in This Repository
+
+- TypeScript strict mode enabled
+- ESLint + CI checks on push
+- CodeQL code scanning workflow
+- Dependabot updates for npm and GitHub Actions
+- Reduced framework fingerprinting (`poweredByHeader: false`)
+- Static CSP/referrer directives in app layout

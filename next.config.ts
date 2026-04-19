@@ -5,6 +5,8 @@ const isUserOrOrgSite = repository.endsWith(".github.io");
 const basePath = repository && !isUserOrOrgSite ? `/${repository}` : "";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  poweredByHeader: false,
   output: "export",
   trailingSlash: true,
   images: {
