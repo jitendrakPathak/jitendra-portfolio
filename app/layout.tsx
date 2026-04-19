@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jitendra Pathak | Work Portfolio",
+  title: "Jitendra Pathak - Lead Engineer at Societe Generale",
   description:
-    "Card-based portfolio of Jitendra Pathak, Lead Engineer at Societe Generale, based in Bengaluru, India.",
+    "Jitendra Pathak, Lead Engineer at Societe Generale, based in Bengaluru, India.",
 };
 
 export default function RootLayout({
