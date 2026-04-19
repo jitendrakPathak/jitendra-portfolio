@@ -16,22 +16,16 @@ export function WorkCaseCard({ workCase, index }: WorkCaseCardProps) {
     <Link
       href={`/work/${workCase.slug}`}
       className={`work-card tone-${workCase.tone} fade-card`}
-      style={withDelay(120 + index * 45)}
+      style={withDelay(90 + index * 40)}
       aria-label={`Open ${workCase.title}`}
     >
       <span className="work-card-arrow" aria-hidden>
         ↗
       </span>
-      <div className="work-card-visual" aria-hidden>
-        <span className="visual-pill" />
-        <span className="visual-dot" />
-      </div>
+
       <div className="work-card-content">
-        <p className="work-card-category">
-          {workCase.category} · {workCase.year}
-        </p>
         <h2>{workCase.title}</h2>
-        <p>{workCase.excerpt}</p>
+        <p>&ldquo;{workCase.excerpt}&rdquo;</p>
       </div>
     </Link>
   );

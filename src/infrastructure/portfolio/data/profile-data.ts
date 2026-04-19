@@ -2,10 +2,9 @@ import type { PortfolioProfile } from "@/src/domain/portfolio/entities/profile";
 
 export const PROFILE_DATA: PortfolioProfile = {
   name: "Jitendra Pathak",
-  role: "Banking, Operations, SEO & Business Growth Leader",
-  location: "Based in New Zealand Region",
-  summary:
-    "10+ years across banking, transport, shuttle, tours, SEO, and business development, with 5 years as an entrepreneur building ventures from scratch.",
+  role: "Lead Engineer at Societe Generale",
+  location: "Based in Bengaluru, India",
+  summary: "",
   links: [
     {
       label: "LinkedIn",

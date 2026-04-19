@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import type { PortfolioProfile } from "@/src/domain/portfolio/entities/profile";
 import type { PortfolioWorkCase } from "@/src/domain/portfolio/entities/work-case";
 import { SocialLinkList } from "@/src/presentation/portfolio/components/social-link-list";
+import { useUiPreferences } from "@/src/presentation/providers/ui-preferences-provider";
+import { UiPreferenceControls } from "@/src/presentation/shared/components/ui-preference-controls";
 
 interface WorkCaseDetailProps {
   workCase: PortfolioWorkCase;
@@ -10,11 +14,16 @@ interface WorkCaseDetailProps {
 }
 
 export function WorkCaseDetail({ workCase, nextWorkCase, profile }: WorkCaseDetailProps) {
+  const { t } = useUiPreferences();
+
   return (
     <div className="detail-shell">
-      <Link className="detail-back" href="/">
-        ← Back to Home
-      </Link>
+      <div className="detail-topbar">
+        <Link className="detail-back" href="/">
+          ← {t("backToHome")}
+        </Link>
+        <UiPreferenceControls className="preference-panel detail-preferences" />
+      </div>
 
       <article className="detail-article">
         <div className={`detail-hero tone-${workCase.tone}`}>
@@ -24,22 +33,22 @@ export function WorkCaseDetail({ workCase, nextWorkCase, profile }: WorkCaseDeta
         </div>
 
         <section>
-          <h2>Overview</h2>
+          <h2>{t("overview")}</h2>
           <p>{workCase.subtitle}</p>
         </section>
 
         <section>
-          <h2>Challenge</h2>
+          <h2>{t("challenge")}</h2>
           <p>{workCase.challenge}</p>
         </section>
 
         <section>
-          <h2>Approach</h2>
+          <h2>{t("approach")}</h2>
           <p>{workCase.approach}</p>
         </section>
 
         <section>
-          <h2>Impact</h2>
+          <h2>{t("impact")}</h2>
           <p>{workCase.impact}</p>
           <ul>
             {workCase.highlights.map((highlight) => (
@@ -50,14 +59,19 @@ export function WorkCaseDetail({ workCase, nextWorkCase, profile }: WorkCaseDeta
 
         {nextWorkCase ? (
           <Link className="detail-next" href={`/work/${nextWorkCase.slug}`}>
-            Next Case → {nextWorkCase.title}
+            {t("nextCase")} → {nextWorkCase.title}
           </Link>
         ) : null}
       </article>
 
       <footer className="detail-footer">
         <p>{profile.name}</p>
-        <SocialLinkList links={profile.links} className="detail-footer-links" />
+        <div className="detail-footer-nav">
+          <Link className="detail-about-link" href="/about">
+            {t("aboutMe")}
+          </Link>
+          <SocialLinkList links={profile.links} className="detail-footer-links" />
+        </div>
       </footer>
     </div>
   );
