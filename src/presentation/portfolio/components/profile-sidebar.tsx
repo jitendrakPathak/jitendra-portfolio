@@ -12,7 +12,9 @@ export function ProfileSidebar({ profile }: ProfileSidebarProps) {
   return (
     <aside className="profile-sidebar">
       <div className="profile-head">
-        <p className="profile-name">{profile.name}</p>
+        <Link href="/" className="profile-name-link">
+          <p className="profile-name">{profile.name}</p>
+        </Link>
         <p className="profile-role">Lead Engineer at Societe Generale</p>
         <p className="profile-location">Based in Bengaluru, India</p>
       </div>

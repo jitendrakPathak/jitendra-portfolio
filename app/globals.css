@@ -96,6 +96,11 @@ a {
   font-family: "Avenir Next Condensed", "Trebuchet MS", sans-serif;
 }
 
+.profile-name-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .profile-role,
 .profile-location {
   margin: 0;
