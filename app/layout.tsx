@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jitendra Pathak | Engineering Leader & Entrepreneur",
+  title: "Jitendra Pathak | Portfolio",
   description:
-    "Portfolio of Jitendra Pathak: engineering leadership, quant finance systems, and entrepreneur-led growth execution.",
+    "Portfolio of Jitendra Pathak with 10+ years across banking, transport, tours, SEO, business development, and 5 years of entrepreneurship.",
 };
 
 export default function RootLayout({

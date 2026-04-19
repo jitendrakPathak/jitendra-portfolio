@@ -35,7 +35,3 @@ This repo includes a workflow at `.github/workflows/deploy-pages.yml`.
 3. The workflow builds and deploys automatically.
 
 The `next.config.ts` is configured for project pages (`/<repo-name>`) by detecting `GITHUB_REPOSITORY` during CI.
-
-## TypeScript-Only Cleanup
-
-The old JavaScript component/pages folders were removed and the project now runs as TypeScript-only (`allowJs: false`).

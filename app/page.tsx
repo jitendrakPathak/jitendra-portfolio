@@ -1,188 +1,250 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 
-const keyMetrics = [
-  {
-    value: "20+",
-    label: "Years of experience",
-    note: "Engineering delivery across enterprise finance and business growth",
-  },
-  {
-    value: "11",
-    label: "Engineers led",
-    note: "Built high-accountability teams for mission-critical delivery",
-  },
-  {
-    value: "2x to 4x",
-    label: "Business scale impact",
-    note: "Entrepreneurial operating model for practical growth execution",
-  },
-  {
-    value: "Global",
-    label: "Institutional footprint",
-    note: "Platforms used in international banking environments",
-  },
-] as const;
+type Stat = {
+  value: string;
+  label: string;
+  detail: string;
+};
 
-const enterpriseExperience = [
+type Domain = {
+  title: string;
+  summary: string;
+  points: string[];
+};
+
+type LinkCard = {
+  platform: string;
+  handle: string;
+  href: string;
+  kind: "social" | "coding";
+};
+
+const stats: Stat[] = [
   {
-    company: "Societe Generale",
-    focus: "Risk Valuation Platform Leadership",
+    value: "10+",
+    label: "Years across core industries",
+    detail: "Banking, transport, shuttle, tours, SEO, and business development",
+  },
+  {
+    value: "5",
+    label: "Years as entrepreneur",
+    detail: "Built businesses from scratch and helped teams scale sustainably",
+  },
+  {
+    value: "2x-4x",
+    label: "Regional growth results",
+    detail: "Hands-on execution model from strategy to operations",
+  },
+  {
+    value: "Multi-Sector",
+    label: "Leadership range",
+    detail: "Enterprise systems mindset with field-level business ownership",
+  },
+];
+
+const domainExperience: Domain[] = [
+  {
+    title: "Banking Technology & Delivery",
     summary:
-      "Directed architecture and delivery for valuation adjustment systems across equity and fixed-income workflows.",
-    outcomes: [
-      "Designed stochastic model integration for pricing accuracy and auditability",
-      "Led an 11-engineer team with clear delivery cadences and quality ownership",
-      "Improved reliability of risk operations by reducing manual error pathways",
+      "Led high-accountability delivery in financial and risk-sensitive environments where quality, controls, and speed all matter.",
+    points: [
+      "Built reliable, scalable systems for complex business workflows",
+      "Coordinated technology decisions with leadership and business units",
+      "Raised delivery standards through clearer process and ownership",
     ],
   },
   {
-    company: "Global Banking Technology",
-    focus: "Quantitative Systems Architecture",
+    title: "Transport, Shuttle & Tours Operations",
     summary:
-      "Built and modernized performance-oriented platforms where engineering quality and financial correctness both matter.",
-    outcomes: [
-      "Connected quantitative research with production-grade software architecture",
-      "Improved throughput in high-volume risk and pricing data pipelines",
-      "Translated complex model requirements into maintainable engineering systems",
+      "Improved operational flow for customer-facing mobility services with measurable impact on growth and repeatability.",
+    points: [
+      "Aligned service design to real regional demand patterns",
+      "Improved operating efficiency through route and process planning",
+      "Supported growth from early stage to stronger execution maturity",
     ],
   },
-] as const;
-
-const ventureExperience = [
   {
-    title: "NZ Shuttle Business",
-    role: "Business Development Consultant",
+    title: "SEO, Business Development & Market Expansion",
     summary:
-      "Applied product thinking and operational discipline to scale a transportation business from 2x to 4x.",
-    outcomes: [
-      "Reframed service operations around customer demand patterns",
-      "Improved unit economics through route and process optimization",
-      "Created a repeatable growth playbook for sustainable expansion",
+      "Delivered practical growth systems that connect digital visibility, sales execution, and long-term business value.",
+    points: [
+      "Improved lead quality with SEO-focused positioning",
+      "Built business development pipelines grounded in market insight",
+      "Helped owners turn fragmented efforts into repeatable growth motion",
     ],
   },
+];
+
+const entrepreneurHighlights = [
+  "Built businesses from zero to active operations with clear go-to-market plans",
+  "Helped regional founders structure execution for consistent growth",
+  "Blended strategic thinking with on-ground action and accountability",
 ] as const;
 
-const expertiseAreas = [
-  "Engineering Leadership",
-  "Quant Finance Platforms",
-  "Risk & Pricing Systems",
-  "Enterprise Architecture",
-  "Business Strategy",
-  "Entrepreneurial Operations",
-  "Platform Modernization",
-  "Scalable Team Building",
-] as const;
+const socialLinks: LinkCard[] = [
+  {
+    platform: "LinkedIn",
+    handle: "@jitendrapathak",
+    href: "https://www.linkedin.com/in/jitendrapathak/",
+    kind: "social",
+  },
+  {
+    platform: "X / Twitter",
+    handle: "@jitendrakPathak",
+    href: "https://x.com/jitendrakPathak",
+    kind: "social",
+  },
+  {
+    platform: "Instagram",
+    handle: "@jitendrakpathak",
+    href: "https://www.instagram.com/jitendrakpathak/",
+    kind: "social",
+  },
+  {
+    platform: "YouTube",
+    handle: "@jitendrakpathak",
+    href: "https://www.youtube.com/@jitendrakpathak",
+    kind: "social",
+  },
+  {
+    platform: "GitHub",
+    handle: "@jitendrakPathak",
+    href: "https://github.com/jitendrakPathak",
+    kind: "coding",
+  },
+  {
+    platform: "LeetCode",
+    handle: "@jitendrakpathak",
+    href: "https://leetcode.com/jitendrakpathak/",
+    kind: "coding",
+  },
+  {
+    platform: "HackerRank",
+    handle: "@jitendrakpathak",
+    href: "https://www.hackerrank.com/jitendrakpathak",
+    kind: "coding",
+  },
+  {
+    platform: "Stack Overflow",
+    handle: "Jitendra Pathak",
+    href: "https://stackoverflow.com/users",
+    kind: "coding",
+  },
+];
 
-const advisoryThemes = [
-  "Modernize legacy financial systems without losing control of risk",
-  "Align business goals, architecture decisions, and delivery velocity",
-  "Scale products with the discipline of enterprise engineering",
-] as const;
+function withDelay(ms: number): CSSProperties {
+  return { "--delay": `${ms}ms` } as CSSProperties;
+}
 
-function animationDelay(delayMs: number): CSSProperties {
-  return { "--delay": `${delayMs}ms` } as CSSProperties;
+function NameLogo() {
+  return (
+    <div className="name-logo">
+      <Image
+        src="/jp-monogram.svg"
+        alt="JP monogram logo"
+        width={58}
+        height={58}
+        priority
+      />
+      <div>
+        <p className="logo-name">Jitendra Pathak</p>
+        <p className="logo-subtitle">Operator • Builder • Entrepreneur</p>
+      </div>
+    </div>
+  );
 }
 
 export default function Home() {
   return (
-    <div className="page-shell">
-      <header className="top-nav reveal" style={animationDelay(80)}>
-        <p className="brand-mark">Jitendra Pathak</p>
-        <nav aria-label="Primary" className="nav-links">
-          <a href="#profile">Profile</a>
+    <div className="portfolio-shell">
+      <header className="site-header fade-up" style={withDelay(70)}>
+        <NameLogo />
+        <nav aria-label="Primary" className="site-nav">
+          <a href="#about">About</a>
           <a href="#experience">Experience</a>
-          <a href="#venture">Entrepreneur</a>
-          <a href="#contact">Contact</a>
+          <a href="#entrepreneur">Entrepreneur</a>
+          <a href="#connect">Connect</a>
         </nav>
       </header>
 
       <main>
-        <section className="hero section reveal" style={animationDelay(140)}>
-          <p className="eyebrow">Engineering Leader • Quant Finance Architect • Entrepreneur</p>
-          <h1>
-            Building high-performance financial platforms with the execution depth
-            of a 20-year operator.
-          </h1>
-          <p className="hero-lead">
-            I help organizations move from complex ideas to measurable outcomes,
-            combining enterprise-grade engineering leadership with entrepreneurial
-            speed and accountability.
-          </p>
-          <div className="hero-cta">
-            <a
-              href="https://github.com/jitendrakPathak"
-              target="_blank"
-              rel="noreferrer"
-              className="button button-primary"
-            >
-              View GitHub
-            </a>
-            <a href="#contact" className="button button-ghost">
-              Discuss Collaboration
-            </a>
-          </div>
-          <div className="metrics-grid" aria-label="Key metrics">
-            {keyMetrics.map((metric, index) => (
-              <article
-                key={metric.label}
-                className="metric-card reveal"
-                style={animationDelay(220 + index * 90)}
-              >
-                <p className="metric-value">{metric.value}</p>
-                <h2>{metric.label}</h2>
-                <p>{metric.note}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="profile" className="section split-section reveal" style={animationDelay(180)}>
-          <article className="feature-card">
-            <p className="section-tag">Leadership Profile</p>
-            <h2>Enterprise confidence, entrepreneur mindset.</h2>
+        <section className="hero-grid section fade-up" style={withDelay(120)}>
+          <article className="hero-copy">
+            <p className="kicker">Modern Portfolio</p>
+            <h1>
+              Jitendra Pathak
+              <span>Building strong businesses with engineering discipline.</span>
+            </h1>
             <p>
-              My core strength is operating at the intersection of engineering,
-              finance, and business strategy. I build platforms that satisfy strict
-              enterprise standards while still delivering with practical speed.
+              I bring over a decade of cross-industry experience across banking,
+              transport, shuttle, tours, SEO, and business development, plus 5
+              years of entrepreneurship helping businesses grow in the region.
             </p>
-            <p>
-              This dual lens enables me to lead technical transformation, mentor
-              teams, and drive outcomes that leadership teams can trust.
-            </p>
+            <div className="hero-actions">
+              <a className="btn btn-primary" href="#connect">
+                Connect With Me
+              </a>
+              <a className="btn btn-outline" href="#experience">
+                View Journey
+              </a>
+            </div>
           </article>
 
-          <article className="feature-card">
-            <p className="section-tag">Advisory Focus</p>
-            <ul className="statement-list">
-              {advisoryThemes.map((theme) => (
-                <li key={theme}>{theme}</li>
-              ))}
-            </ul>
-            <p className="small-note">
-              Ideal for CTO advisory, platform modernization programs, and
-              founder-led scaling journeys.
+          <aside className="hero-panel fade-up" style={withDelay(180)}>
+            <p className="panel-label">Profile Snapshot</p>
+            <h2>Leadership + Growth + Execution</h2>
+            <p>
+              From enterprise delivery to entrepreneur-led expansion, my focus is
+              always the same: build systems that perform and businesses that grow.
             </p>
+            <p className="panel-foot">Available for leadership roles and advisory collaboration.</p>
+          </aside>
+        </section>
+
+        <section className="stats-grid section" aria-label="Key stats">
+          {stats.map((item, index) => (
+            <article className="stat-card fade-up" style={withDelay(230 + index * 75)} key={item.label}>
+              <p className="stat-value">{item.value}</p>
+              <h2>{item.label}</h2>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </section>
+
+        <section id="about" className="section split-layout fade-up" style={withDelay(250)}>
+          <article>
+            <p className="section-eyebrow">About</p>
+            <h2>Enterprise-grade thinking with entrepreneurial speed.</h2>
+            <p>
+              I work where strategy meets execution. My style is practical,
+              delivery-focused, and built around measurable outcomes that teams
+              and founders can trust.
+            </p>
+          </article>
+          <article className="quote-card">
+            <p>
+              &ldquo;Strong businesses are not built by ideas alone. They are
+              built by disciplined execution, customer focus, and systems that
+              scale.&rdquo;
+            </p>
+            <span>- Jitendra Pathak</span>
           </article>
         </section>
 
-        <section id="experience" className="section reveal" style={animationDelay(220)}>
-          <div className="section-headline">
-            <p className="section-tag">Enterprise Experience</p>
-            <h2>Impact where precision and scale are non-negotiable.</h2>
+        <section id="experience" className="section">
+          <div className="heading-block fade-up" style={withDelay(300)}>
+            <p className="section-eyebrow">Experience</p>
+            <h2>10+ years across delivery, operations, and growth.</h2>
           </div>
-          <div className="timeline-grid">
-            {enterpriseExperience.map((item, index) => (
-              <article
-                key={item.company}
-                className="timeline-card reveal"
-                style={animationDelay(280 + index * 100)}
-              >
-                <p className="timeline-company">{item.company}</p>
-                <h3>{item.focus}</h3>
-                <p>{item.summary}</p>
+          <div className="domain-grid">
+            {domainExperience.map((domain, index) => (
+              <article className="domain-card fade-up" style={withDelay(340 + index * 90)} key={domain.title}>
+                <h3>{domain.title}</h3>
+                <p>{domain.summary}</p>
                 <ul>
-                  {item.outcomes.map((outcome) => (
-                    <li key={outcome}>{outcome}</li>
+                  {domain.points.map((point) => (
+                    <li key={point}>{point}</li>
                   ))}
                 </ul>
               </article>
@@ -190,61 +252,52 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="venture" className="section reveal" style={animationDelay(260)}>
-          <div className="section-headline">
-            <p className="section-tag">Entrepreneur Profile</p>
-            <h2>Translating strategy into growth on the ground.</h2>
+        <section id="entrepreneur" className="section founder-section fade-up" style={withDelay(390)}>
+          <div>
+            <p className="section-eyebrow">Entrepreneur Journey</p>
+            <h2>5 years of building and scaling from scratch.</h2>
+            <p>
+              I have worked closely with businesses in the region to launch,
+              structure, and scale operations in competitive markets.
+            </p>
           </div>
-          {ventureExperience.map((item) => (
-            <article key={item.title} className="venture-card reveal" style={animationDelay(320)}>
-              <div>
-                <p className="timeline-company">{item.role}</p>
-                <h3>{item.title}</h3>
-                <p>{item.summary}</p>
-              </div>
-              <ul>
-                {item.outcomes.map((outcome) => (
-                  <li key={outcome}>{outcome}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
+          <ul>
+            {entrepreneurHighlights.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </section>
 
-        <section className="section reveal" style={animationDelay(300)}>
-          <div className="section-headline">
-            <p className="section-tag">Capability Stack</p>
-            <h2>What I bring to teams and founders.</h2>
+        <section id="connect" className="section">
+          <div className="heading-block fade-up" style={withDelay(430)}>
+            <p className="section-eyebrow">Connect</p>
+            <h2>Find me on social and coding platforms.</h2>
           </div>
-          <div className="chip-grid">
-            {expertiseAreas.map((area, index) => (
-              <span
-                key={area}
-                className="chip reveal"
-                style={animationDelay(360 + index * 70)}
+          <div className="links-grid">
+            {socialLinks.map((link, index) => (
+              <a
+                key={link.platform}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="link-card fade-up"
+                style={withDelay(470 + index * 55)}
+                aria-label={`Open ${link.platform}`}
               >
-                {area}
-              </span>
+                <p className="link-kind">{link.kind === "social" ? "Social" : "Coding"}</p>
+                <h3>{link.platform}</h3>
+                <p>{link.handle}</p>
+              </a>
             ))}
           </div>
         </section>
       </main>
 
-      <footer id="contact" className="section footer-card reveal" style={animationDelay(380)}>
-        <p className="section-tag">Let&apos;s Build Something Meaningful</p>
-        <h2>Open to leadership, advisory, and high-impact build opportunities.</h2>
+      <footer className="site-footer section fade-up" style={withDelay(620)}>
+        <NameLogo />
         <p>
-          If your team needs a senior operator who can align architecture,
-          execution, and growth, let&apos;s connect.
+          Portfolio of Jitendra Pathak. Focused on leadership, growth, and modern execution.
         </p>
-        <a
-          href="https://github.com/jitendrakPathak"
-          target="_blank"
-          rel="noreferrer"
-          className="button button-primary"
-        >
-          Connect on GitHub
-        </a>
       </footer>
     </div>
   );
