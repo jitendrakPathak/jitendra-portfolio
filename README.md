@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jitendra Pathak Portfolio
 
-## Getting Started
+A modern, executive-style portfolio built with Next.js App Router and TypeScript, designed to represent senior engineering leadership and entrepreneur profile.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Static export for GitHub Pages
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+This generates the static site in `out/`.
 
-To learn more about Next.js, take a look at the following resources:
+## GitHub Pages Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This repo includes a workflow at `.github/workflows/deploy-pages.yml`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push to the `main` branch.
+2. In GitHub repo settings, open **Pages** and set **Build and deployment** source to **GitHub Actions**.
+3. The workflow builds and deploys automatically.
 
-## Deploy on Vercel
+The `next.config.ts` is configured for project pages (`/<repo-name>`) by detecting `GITHUB_REPOSITORY` during CI.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## TypeScript-Only Cleanup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The old JavaScript component/pages folders were removed and the project now runs as TypeScript-only (`allowJs: false`).
